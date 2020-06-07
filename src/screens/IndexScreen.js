@@ -30,6 +30,14 @@ const IndexScreen = ({ navigation }) => {
   )
 };
 
+IndexScreen.navigationOptions = ({ navigation }) => {
+  return {
+      headerRight: () => <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+      <Entypo name="plus" size={30} style={{ marginRight: 15 }} />
+      </TouchableOpacity>
+  };
+};
+
 const styles = StyleSheet.create({
   rowStyle: {
     flexDirection: 'row',
