@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Context } from '../context/BlogContext';
-import { Entypo } from '@expo/vector-icons';
+import React, { useContext } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Context } from "../context/BlogContext";
+import { Entypo } from "@expo/vector-icons";
 
 const ShowScreen = ({ navigation }) => {
   const { state } = useContext(Context);
 
   const blogPost = state.find(
-    blogPost => blogPost.id === navigation.getParam('id')
-);
+    (blogPost) => blogPost.id === navigation.getParam("id")
+  );
 
   return (
     <View>
@@ -20,14 +20,18 @@ const ShowScreen = ({ navigation }) => {
 
 ShowScreen.navigationOptions = ({ navigation }) => {
   return {
-      headerRight: () => <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Edit", { id: navigation.getParam("id") })
+        }
+      >
         <Entypo name="edit" size={20} style={{ marginRight: 15 }} />
       </TouchableOpacity>
+    ),
   };
 };
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
 
 export default ShowScreen;
